@@ -1,3 +1,3 @@
 platform :ios, '7.0'
-pod 'HTTPKit'
+pod 'PromiseKit', '= 0.9.6'
 pod 'Mantle'

@@ -1,4 +1,43 @@
 {
     "name" : "Cultura Geral",
-    "revision" : "1"
+    "revision" : "1",
+    "lang" : "pt-pt",
+	"questions" : [
+        {
+            "question" : "Quem foi o primeiro rei de Portugal",
+            "answer" : 0,
+            "answers" : [
+            	{
+            		"text" : "D. Afonso Henriques"
+            	},
+            	{
+            		"text" : "D. Afonso II"
+            	},
+            	{
+            		"text" : "D. Adolfo Henriques"
+            	},
+            	{
+            		"text" : "D. Ricardo Pereira"
+            	}
+            ]
+        },
+        {
+            "question" : "Quem é o autor de 'Os Lusíadas'",
+            "answer" : 2,
+            "answers" : [
+            	{
+            		"text" : "Luís de Carmones"
+            	},
+            	{
+            		"text" : "Rodrigo dos Santos"
+            	},
+            	{
+            		"text" : "Luís Vaz de Camões"
+            	},
+            	{
+            		"text" : "D. Afonso VI"
+            	}
+            ]
+        }
+    ]
 }
