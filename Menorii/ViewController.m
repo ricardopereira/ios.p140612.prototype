@@ -8,12 +8,9 @@
 
 #import "ViewController.h"
 
-#import "PromiseKit.h"
-#import "Mantle.h"
-
+#import "DataProvider.h"
+#import "Package.h"
 #import "Question.h"
-
-static NSString *const packageUrl = @"https://raw.githubusercontent.com/ricardopereira/ios.p140612.prototype/master/Data/pack01.json";
 
 @interface ViewController ()
 
@@ -24,29 +21,21 @@ static NSString *const packageUrl = @"https://raw.githubusercontent.com/ricardop
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [NSURLConnection GET:packageUrl].then(^(NSDictionary *json) {
-        // Paremeters vary with the NSURLConnection result: NSDictionary or NSData
-        NSArray *questions = json[@"questions"];
 
-        NSLog(@"Received %d questions on package %@",[questions count],json[@"name"]);
+    // Teste
+    [DataProvider freePackagesWithCompletionBlock:^(NSArray *packages, NSError *error) {
+        // Enumerate with blocks - iterate all the questions
+        [packages enumerateObjectsUsingBlock:^(Package *item, NSUInteger idx, BOOL *stop) {
+            NSLog(@"%@", item.name);
 
-        return questions;
-    }).then(^(NSArray *questions) {
-        // Serialize JSON to objects
-        NSArray *questionObjects = [MTLJSONAdapter modelsOfClass:Question.class fromJSONArray:questions error:nil];
-
-        // Iterate all the questions
-        for (Question *item in questionObjects) {
-            NSLog(@"%@",item.question);
-        }
-
-        return [MTLJSONAdapter modelsOfClass:Question.class fromJSONArray:questions error:nil];
-    }).catch(^(NSError *error) {
-        // Show an error perhaps
-        // Return the error to break the chain
-        return error;
-    });
+            [DataProvider questionsWithCompletionBlock:item completionBlock:^(NSArray *questions, NSError *error) {
+                // Iterate all the questions
+                for (Question *item in questions) {
+                    NSLog(@"%@",item.question);
+                }
+            }];
+        }];
+    }];
 }
 
 @end

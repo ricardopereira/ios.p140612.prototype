@@ -13,9 +13,9 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return @{
-        @"question": @"question",
-        @"answer": @"answer"
-    };
+             @"question": @"question",
+             @"answer": @"answer"
+             };
 }
 
 @end

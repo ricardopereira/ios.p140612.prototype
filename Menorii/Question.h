@@ -12,7 +12,7 @@
 
 @interface Question : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic,strong,readonly) NSString *question;
-@property (nonatomic,strong,readonly) NSNumber *answer;
+@property (nonatomic, strong, readonly) NSString *question;
+@property (nonatomic, strong, readonly) NSNumber *answer;
 
 @end

@@ -10,6 +10,7 @@
 		8BA834C3F3F54EDEB9A116A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D143B1E0C2949BD975D0259 /* libPods.a */; };
 		D7173EBC199A82E300AE29C3 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7173EBB199A82E300AE29C3 /* DataProvider.m */; };
 		D7173EBF199A86EB00AE29C3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = D7173EBE199A86EB00AE29C3 /* Question.m */; };
+		D7173EC3199AEFBD00AE29C3 /* Package.m in Sources */ = {isa = PBXBuildFile; fileRef = D7173EC2199AEFBC00AE29C3 /* Package.m */; };
 		D72252C6199A363100F0D5C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72252C5199A363100F0D5C4 /* Foundation.framework */; };
 		D72252C8199A363100F0D5C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72252C7199A363100F0D5C4 /* CoreGraphics.framework */; };
 		D72252CA199A363100F0D5C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72252C9199A363100F0D5C4 /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 		D7173EBB199A82E300AE29C3 /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
 		D7173EBD199A86EB00AE29C3 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		D7173EBE199A86EB00AE29C3 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		D7173EC1199AEFBC00AE29C3 /* Package.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Package.h; sourceTree = "<group>"; };
+		D7173EC2199AEFBC00AE29C3 /* Package.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Package.m; sourceTree = "<group>"; };
 		D72252C2199A363100F0D5C4 /* Menorii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Menorii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D72252C5199A363100F0D5C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D72252C7199A363100F0D5C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -89,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7173EC0199AE84F00AE29C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D7173EBD199A86EB00AE29C3 /* Question.h */,
+				D7173EBE199A86EB00AE29C3 /* Question.m */,
+				D7173EC1199AEFBC00AE29C3 /* Package.h */,
+				D7173EC2199AEFBC00AE29C3 /* Package.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D72252B9199A363100F0D5C4 = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +147,7 @@
 				D72252CC199A363100F0D5C4 /* Supporting Files */,
 				D7173EBA199A82E300AE29C3 /* DataProvider.h */,
 				D7173EBB199A82E300AE29C3 /* DataProvider.m */,
-				D7173EBD199A86EB00AE29C3 /* Question.h */,
-				D7173EBE199A86EB00AE29C3 /* Question.m */,
+				D7173EC0199AE84F00AE29C3 /* Model */,
 			);
 			path = Menorii;
 			sourceTree = "<group>";
@@ -303,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7173EC3199AEFBD00AE29C3 /* Package.m in Sources */,
 				D72252DC199A363100F0D5C4 /* ViewController.m in Sources */,
 				D72252D6199A363100F0D5C4 /* AppDelegate.m in Sources */,
 				D7173EBF199A86EB00AE29C3 /* Question.m in Sources */,
