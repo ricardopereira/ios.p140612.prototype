@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 
 #import "Mantle.h"
+#import "Question.h"
 
 @interface Package : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSURL *url;
+
+@property (nonatomic, copy) NSArray *questions;
 
 @end

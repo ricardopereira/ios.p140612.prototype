@@ -154,18 +154,6 @@ typedef enum : NSUInteger {
     [DataProvider freePackagesWithCompletionBlock:^(NSArray *packages, NSError *error) {
         self.packages = packages;
         _loadingPackages = PackagesStateLoaded;
-
-        // Enumerate with blocks - iterate all the questions
-        [packages enumerateObjectsUsingBlock:^(Package *item, NSUInteger idx, BOOL *stop) {
-            NSLog(@"%@", item.name);
-
-            [DataProvider questionsWithCompletionBlock:item completionBlock:^(NSArray *questions, NSError *error) {
-                // Iterate all the questions
-                for (Question *item in questions) {
-                    NSLog(@"%@",item.question);
-                }
-            }];
-        }];
     }];
 }
 
@@ -173,6 +161,7 @@ typedef enum : NSUInteger {
 {
     self.labelWelcomeDetail.hidden = false;
     self.buttonPackage.hidden = true;
+    self.viewDetail.backgroundColor = [UIColor colorWithRed:0.15 green:0.2 blue:0.35 alpha:1];
 
     // Data
     self.labelPackageName.text = @"Bem-vindo";
@@ -185,6 +174,7 @@ typedef enum : NSUInteger {
 {
     self.labelWelcomeDetail.hidden = true;
     self.buttonPackage.hidden = false;
+    self.viewDetail.backgroundColor = [UIColor whiteColor];
 
     // Data
     if (_packages.count > 0) {

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Package.h"
+
 @interface QuestionViewController : UIViewController
+
+@property (nonatomic, strong) Package *package;
 
 @end

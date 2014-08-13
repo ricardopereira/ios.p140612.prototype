@@ -64,6 +64,14 @@ static NSString *const packagesUrl = @"https://cld.pt/dl/download/c7874c49-6c23-
         // Serialize JSON to objects
         NSArray *questionsObjects = [MTLJSONAdapter modelsOfClass:Question.class fromJSONArray:questions error:nil];
 
+        // Enumerate with blocks - iterate all the questions
+        [questionsObjects enumerateObjectsUsingBlock:^(Question *item, NSUInteger idx, BOOL *stop) {
+            [item.answers addObject:@"çdkfjgsçkdfjg"];
+            [item.answers addObject:@"asçd333"];
+            [item.answers addObject:@"asd23ff"];
+            [item.answers addObject:@"111"];
+        }];
+
         completionBlock(questionsObjects,nil);
 
         // Return array with Package items

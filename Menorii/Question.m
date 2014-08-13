@@ -18,4 +18,13 @@
              };
 }
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error {
+    self = [super initWithDictionary:dictionaryValue error:error];
+    if (self == nil) return nil;
+
+    _answers = [[NSMutableArray alloc] init];
+
+    return self;
+}
+
 @end

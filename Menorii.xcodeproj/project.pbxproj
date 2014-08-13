@@ -28,6 +28,7 @@
 		D72252F1199A363100F0D5C4 /* MenoriiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72252F0199A363100F0D5C4 /* MenoriiTests.m */; };
 		D72BAFDC199BA3AF0091B02F /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFDB199BA3AF0091B02F /* PackageViewController.m */; };
 		D72BAFDF199BA3D80091B02F /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFDE199BA3D80091B02F /* QuestionViewController.m */; };
+		D72BAFE2199BFFFA0091B02F /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFE1199BFFFA0091B02F /* UIAlertView+Blocks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		D72BAFDB199BA3AF0091B02F /* PackageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageViewController.m; sourceTree = "<group>"; };
 		D72BAFDD199BA3D80091B02F /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		D72BAFDE199BA3D80091B02F /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
+		D72BAFE0199BFFFA0091B02F /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		D72BAFE1199BFFFA0091B02F /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 				D72BAFDD199BA3D80091B02F /* QuestionViewController.h */,
 				D72BAFDE199BA3D80091B02F /* QuestionViewController.m */,
 				D72252DD199A363100F0D5C4 /* Images.xcassets */,
+				D72BAFE0199BFFFA0091B02F /* UIAlertView+Blocks.h */,
+				D72BAFE1199BFFFA0091B02F /* UIAlertView+Blocks.m */,
 				D72252CC199A363100F0D5C4 /* Supporting Files */,
 				D7173EBA199A82E300AE29C3 /* DataProvider.h */,
 				D7173EBB199A82E300AE29C3 /* DataProvider.m */,
@@ -341,6 +346,7 @@
 				D7173EC3199AEFBD00AE29C3 /* Package.m in Sources */,
 				D72252DC199A363100F0D5C4 /* MainViewController.m in Sources */,
 				D72BAFDF199BA3D80091B02F /* QuestionViewController.m in Sources */,
+				D72BAFE2199BFFFA0091B02F /* UIAlertView+Blocks.m in Sources */,
 				D72252D6199A363100F0D5C4 /* AppDelegate.m in Sources */,
 				D7173EBF199A86EB00AE29C3 /* Question.m in Sources */,
 				D7173EBC199A82E300AE29C3 /* DataProvider.m in Sources */,

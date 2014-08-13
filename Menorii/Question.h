@@ -15,4 +15,6 @@
 @property (nonatomic, strong, readonly) NSString *question;
 @property (nonatomic, strong, readonly) NSNumber *answer;
 
+@property (nonatomic, strong) NSMutableArray *answers;
+
 @end
