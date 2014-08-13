@@ -26,6 +26,8 @@
 		D72252E7199A363100F0D5C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72252C9199A363100F0D5C4 /* UIKit.framework */; };
 		D72252EF199A363100F0D5C4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D72252ED199A363100F0D5C4 /* InfoPlist.strings */; };
 		D72252F1199A363100F0D5C4 /* MenoriiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D72252F0199A363100F0D5C4 /* MenoriiTests.m */; };
+		D72BAFDC199BA3AF0091B02F /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFDB199BA3AF0091B02F /* PackageViewController.m */; };
+		D72BAFDF199BA3D80091B02F /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFDE199BA3D80091B02F /* QuestionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,10 @@
 		D72252EC199A363100F0D5C4 /* MenoriiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MenoriiTests-Info.plist"; sourceTree = "<group>"; };
 		D72252EE199A363100F0D5C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D72252F0199A363100F0D5C4 /* MenoriiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenoriiTests.m; sourceTree = "<group>"; };
+		D72BAFDA199BA3AF0091B02F /* PackageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageViewController.h; sourceTree = "<group>"; };
+		D72BAFDB199BA3AF0091B02F /* PackageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageViewController.m; sourceTree = "<group>"; };
+		D72BAFDD199BA3D80091B02F /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
+		D72BAFDE199BA3D80091B02F /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +160,10 @@
 				D72252D7199A363100F0D5C4 /* Main.storyboard */,
 				D72252DA199A363100F0D5C4 /* ViewController.h */,
 				D72252DB199A363100F0D5C4 /* ViewController.m */,
+				D72BAFDA199BA3AF0091B02F /* PackageViewController.h */,
+				D72BAFDB199BA3AF0091B02F /* PackageViewController.m */,
+				D72BAFDD199BA3D80091B02F /* QuestionViewController.h */,
+				D72BAFDE199BA3D80091B02F /* QuestionViewController.m */,
 				D72252DD199A363100F0D5C4 /* Images.xcassets */,
 				D72252CC199A363100F0D5C4 /* Supporting Files */,
 				D7173EBA199A82E300AE29C3 /* DataProvider.h */,
@@ -330,10 +340,12 @@
 			files = (
 				D7173EC3199AEFBD00AE29C3 /* Package.m in Sources */,
 				D72252DC199A363100F0D5C4 /* ViewController.m in Sources */,
+				D72BAFDF199BA3D80091B02F /* QuestionViewController.m in Sources */,
 				D72252D6199A363100F0D5C4 /* AppDelegate.m in Sources */,
 				D7173EBF199A86EB00AE29C3 /* Question.m in Sources */,
 				D7173EBC199A82E300AE29C3 /* DataProvider.m in Sources */,
 				D72252D2199A363100F0D5C4 /* main.m in Sources */,
+				D72BAFDC199BA3AF0091B02F /* PackageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
