@@ -11,6 +11,7 @@
 		D7173EBC199A82E300AE29C3 /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D7173EBB199A82E300AE29C3 /* DataProvider.m */; };
 		D7173EBF199A86EB00AE29C3 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = D7173EBE199A86EB00AE29C3 /* Question.m */; };
 		D7173EC3199AEFBD00AE29C3 /* Package.m in Sources */ = {isa = PBXBuildFile; fileRef = D7173EC2199AEFBC00AE29C3 /* Package.m */; };
+		D7173EC6199B863800AE29C3 /* TipoType - Libertad.otf in Resources */ = {isa = PBXBuildFile; fileRef = D7173EC5199B863700AE29C3 /* TipoType - Libertad.otf */; };
 		D72252C6199A363100F0D5C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72252C5199A363100F0D5C4 /* Foundation.framework */; };
 		D72252C8199A363100F0D5C4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72252C7199A363100F0D5C4 /* CoreGraphics.framework */; };
 		D72252CA199A363100F0D5C4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72252C9199A363100F0D5C4 /* UIKit.framework */; };
@@ -46,6 +47,7 @@
 		D7173EBE199A86EB00AE29C3 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		D7173EC1199AEFBC00AE29C3 /* Package.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Package.h; sourceTree = "<group>"; };
 		D7173EC2199AEFBC00AE29C3 /* Package.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Package.m; sourceTree = "<group>"; };
+		D7173EC5199B863700AE29C3 /* TipoType - Libertad.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TipoType - Libertad.otf"; sourceTree = "<group>"; };
 		D72252C2199A363100F0D5C4 /* Menorii.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Menorii.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D72252C5199A363100F0D5C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D72252C7199A363100F0D5C4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,6 +105,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		D7173EC4199B863700AE29C3 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				D7173EC5199B863700AE29C3 /* TipoType - Libertad.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		D72252B9199A363100F0D5C4 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +148,7 @@
 		D72252CB199A363100F0D5C4 /* Menorii */ = {
 			isa = PBXGroup;
 			children = (
+				D7173EC4199B863700AE29C3 /* Font */,
 				D72252D4199A363100F0D5C4 /* AppDelegate.h */,
 				D72252D5199A363100F0D5C4 /* AppDelegate.m */,
 				D72252D7199A363100F0D5C4 /* Main.storyboard */,
@@ -262,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7173EC6199B863800AE29C3 /* TipoType - Libertad.otf in Resources */,
 				D72252DE199A363100F0D5C4 /* Images.xcassets in Resources */,
 				D72252D0199A363100F0D5C4 /* InfoPlist.strings in Resources */,
 				D72252D9199A363100F0D5C4 /* Main.storyboard in Resources */,
@@ -451,6 +463,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Menorii/Menorii-Prefix.pch";
 				INFOPLIST_FILE = "Menorii/Menorii-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -466,6 +479,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Menorii/Menorii-Prefix.pch";
 				INFOPLIST_FILE = "Menorii/Menorii-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
