@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Package.h"
+
 @interface PackageViewController : UIViewController
+
+@property (nonatomic, strong) Package *package;
 
 @end

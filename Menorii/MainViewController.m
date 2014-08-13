@@ -6,12 +6,26 @@
 //  Copyright (c) 2014 Ricardo Pereira. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
-@interface ViewController ()
+#import "DataProvider.h"
+#import "Package.h"
+#import "Question.h"
+
+#import "PackageViewController.h"
+
+typedef enum : NSUInteger {
+    PackagesStateNone,
+    PackagesStateLoading,
+    PackagesStateLoaded
+} PackagesState;
+
+@interface MainViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *viewDetail;
 @property (weak, nonatomic) IBOutlet UILabel *labelPackageName;
+@property (weak, nonatomic) IBOutlet UIButton *buttonPackage;
+@property (weak, nonatomic) IBOutlet UILabel *labelWelcomeDetail;
 
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *panGesturePackage;
 
@@ -20,31 +34,31 @@
 @property (strong, nonatomic) UIGravityBehavior *gravityBehavior;
 @property (strong, nonatomic) UISnapBehavior *snapBehavior;
 
+//Data
+@property (strong, nonatomic) NSArray *packages;
+@property (nonatomic) PackagesState loadingPackages;
+@property (nonatomic) int currentPackageIndex;
+
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Init
-    self.viewDetail.alpha = 0;
-
-    // UI Dynamics
-    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-
-    //[self performSegueWithIdentifier:@"mainToPackage" sender:self];
+    [self start];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    [self showPackage];
-
-    // Data
-    self.labelPackageName.text = @"Teste";
+    if (_loadingPackages == PackagesStateLoaded) {
+        [self showPackage];
+    }
+    else {
+        [self showWelcome];
+    }
 
     self.viewDetail.alpha = 1;
 }
@@ -57,8 +71,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"mainToPackage"]) {
-
+        if (_packages.count <= 0 || _currentPackageIndex >= _packages.count)
+            return;
+        PackageViewController *viewPackage = [segue destinationViewController];
+        viewPackage.package = [_packages objectAtIndex:_currentPackageIndex];
     }
+}
+
+- (IBAction)buttonPackageDidPress:(id)sender {
+
 }
 
 - (IBAction)handleGesturePackage:(id)sender {
@@ -115,7 +136,67 @@
     }
 }
 
+- (void)start
+{
+    [self loadPackages];
+
+    // Init
+    self.viewDetail.alpha = 0;
+    _currentPackageIndex = 0;
+    // UI Dynamics
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+}
+
+- (void)loadPackages
+{
+    _loadingPackages = PackagesStateLoading;
+    // Teste
+    [DataProvider freePackagesWithCompletionBlock:^(NSArray *packages, NSError *error) {
+        self.packages = packages;
+        _loadingPackages = PackagesStateLoaded;
+
+        // Enumerate with blocks - iterate all the questions
+        [packages enumerateObjectsUsingBlock:^(Package *item, NSUInteger idx, BOOL *stop) {
+            NSLog(@"%@", item.name);
+
+            [DataProvider questionsWithCompletionBlock:item completionBlock:^(NSArray *questions, NSError *error) {
+                // Iterate all the questions
+                for (Question *item in questions) {
+                    NSLog(@"%@",item.question);
+                }
+            }];
+        }];
+    }];
+}
+
+- (void)showWelcome
+{
+    self.labelWelcomeDetail.hidden = false;
+    self.buttonPackage.hidden = true;
+
+    // Data
+    self.labelPackageName.text = @"Bem-vindo";
+
+    // Animation
+    [self animateDetail];
+}
+
 - (void)showPackage
+{
+    self.labelWelcomeDetail.hidden = true;
+    self.buttonPackage.hidden = false;
+
+    // Data
+    if (_packages.count > 0) {
+        Package *item = [_packages objectAtIndex:_currentPackageIndex];
+        self.labelPackageName.text = item.name;
+    }
+
+    // Animation
+    [self animateDetail];
+}
+
+- (void)animateDetail
 {
     CGAffineTransform scale = CGAffineTransformMakeScale(0.5, 0.5);
     CGAffineTransform translate = CGAffineTransformMakeTranslation(0, -200);
@@ -130,17 +211,17 @@
         self.viewDetail.transform = CGAffineTransformConcat(scale, translate);
     }completion:^(BOOL finished) {
         // Finally
-
+        
     }];
 }
 
 - (void)nextPackage
 {
-    //number++;
-    // Test porpuse
-    //if number > 3 {
-    //    number = 0
-    //}
+    _currentPackageIndex++;
+    // Check limit
+    if (_currentPackageIndex >= _packages.count) {
+        _currentPackageIndex = 0;
+    }
 
     [self.animator removeAllBehaviors];
 

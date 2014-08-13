@@ -10,4 +10,14 @@
 
 @implementation PackageViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+}
+
+- (IBAction)buttonBackDidPress:(id)sender {
+    [self performSegueWithIdentifier:@"packageToMain" sender:self];
+}
+
 @end
