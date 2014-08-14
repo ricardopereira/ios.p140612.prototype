@@ -77,7 +77,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="B9e-Wr-jm5" secondAttribute="centerY" id="dX6-eX-1bV"/>
                                     <constraint firstAttribute="centerX" secondItem="B9e-Wr-jm5" secondAttribute="centerX" id="pmD-BU-WFj"/>

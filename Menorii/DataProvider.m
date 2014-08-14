@@ -57,20 +57,12 @@ static NSString *const packagesUrl = @"https://cld.pt/dl/download/c7874c49-6c23-
         // Paremeters vary with the NSURLConnection result: NSDictionary or NSData
         NSArray *questions = json[@"questions"];
 
-        NSLog(@"Received %d questions on package %@",[questions count],json[@"name"]);
+        NSLog(@"Received %lu questions on package %@",(unsigned long)[questions count],json[@"name"]);
 
         return questions;
     }).then(^(NSArray *questions) {
         // Serialize JSON to objects
         NSArray *questionsObjects = [MTLJSONAdapter modelsOfClass:Question.class fromJSONArray:questions error:nil];
-
-        // Enumerate with blocks - iterate all the questions
-        [questionsObjects enumerateObjectsUsingBlock:^(Question *item, NSUInteger idx, BOOL *stop) {
-            [item.answers addObject:@"çdkfjgsçkdfjg"];
-            [item.answers addObject:@"asçd333"];
-            [item.answers addObject:@"asd23ff"];
-            [item.answers addObject:@"111"];
-        }];
 
         completionBlock(questionsObjects,nil);
 

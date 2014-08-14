@@ -29,6 +29,7 @@
 		D72BAFDC199BA3AF0091B02F /* PackageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFDB199BA3AF0091B02F /* PackageViewController.m */; };
 		D72BAFDF199BA3D80091B02F /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFDE199BA3D80091B02F /* QuestionViewController.m */; };
 		D72BAFE2199BFFFA0091B02F /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFE1199BFFFA0091B02F /* UIAlertView+Blocks.m */; };
+		D72BAFE5199C20E70091B02F /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFE4199C20E70091B02F /* Answer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		D72BAFDE199BA3D80091B02F /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		D72BAFE0199BFFFA0091B02F /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
 		D72BAFE1199BFFFA0091B02F /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
+		D72BAFE3199C20E70091B02F /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
+		D72BAFE4199C20E70091B02F /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 		D7173EC0199AE84F00AE29C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D72BAFE3199C20E70091B02F /* Answer.h */,
+				D72BAFE4199C20E70091B02F /* Answer.m */,
 				D7173EBD199A86EB00AE29C3 /* Question.h */,
 				D7173EBE199A86EB00AE29C3 /* Question.m */,
 				D7173EC1199AEFBC00AE29C3 /* Package.h */,
@@ -352,6 +357,7 @@
 				D7173EBC199A82E300AE29C3 /* DataProvider.m in Sources */,
 				D72252D2199A363100F0D5C4 /* main.m in Sources */,
 				D72BAFDC199BA3AF0091B02F /* PackageViewController.m in Sources */,
+				D72BAFE5199C20E70091B02F /* Answer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,13 +8,16 @@
 
 #import "Question.h"
 
+#import "Answer.h"
+
 @implementation Question
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return @{
              @"question": @"question",
-             @"answer": @"answer"
+             @"answer": @"answer",
+             @"answers": @"answers"
              };
 }
 
@@ -22,9 +25,13 @@
     self = [super initWithDictionary:dictionaryValue error:error];
     if (self == nil) return nil;
 
-    _answers = [[NSMutableArray alloc] init];
+    // Init variables
 
     return self;
+}
+
++ (NSValueTransformer *)answersJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:Answer.class];
 }
 
 @end

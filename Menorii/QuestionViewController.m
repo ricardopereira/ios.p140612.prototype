@@ -11,6 +11,7 @@
 #import "UIAlertView+Blocks.h"
 
 #import "Question.h"
+#import "Answer.h"
 
 @interface QuestionViewController ()
 
@@ -31,6 +32,8 @@
 
 //Data
 @property (nonatomic) int currentQuestionIndex;
+@property (nonatomic) int correctAnswers;
+@property (nonatomic) int incorrectAnswers;
 @property (strong, nonatomic) Question *currentQuestion;
 
 @end
@@ -42,11 +45,13 @@
     [super viewDidLoad];
 
     _currentQuestionIndex = 0;
+    _correctAnswers = 0;
+    _incorrectAnswers = 0;
 
-    self.buttonAnswer1.tag = 0;
-    self.buttonAnswer2.tag = 1;
-    self.buttonAnswer3.tag = 2;
-    self.buttonAnswer4.tag = 3;
+    self.buttonAnswer1.tag = 1;
+    self.buttonAnswer2.tag = 2;
+    self.buttonAnswer3.tag = 3;
+    self.buttonAnswer4.tag = 4;
 
     self.labelPackageName.text = _package.name;
 
@@ -70,10 +75,13 @@
     UIButton *button = sender;
     NSString *message;
 
+    // Correct or incorrect answer
     if (button.tag == [_currentQuestion.answer integerValue]) {
         message = @"Resposta certa.";
+        _correctAnswers++;
     } else {
         message = @"Resposta errada.";
+        _incorrectAnswers++;
     }
 
     [UIAlertView showWithTitle:@"Menorii"
@@ -99,10 +107,14 @@
     self.labelQuestion.text = _currentQuestion.question;
 
     if (_currentQuestion.answers && _currentQuestion.answers.count == 4) {
-        self.labelAnswer1.text = [_currentQuestion.answers objectAtIndex:0];
-        self.labelAnswer2.text = [_currentQuestion.answers objectAtIndex:1];
-        self.labelAnswer3.text = [_currentQuestion.answers objectAtIndex:2];
-        self.labelAnswer4.text = [_currentQuestion.answers objectAtIndex:3];
+        Answer *answer = [_currentQuestion.answers objectAtIndex:0];
+        self.labelAnswer1.text = answer.text;
+        answer = [_currentQuestion.answers objectAtIndex:1];
+        self.labelAnswer2.text = answer.text;
+        answer = [_currentQuestion.answers objectAtIndex:2];
+        self.labelAnswer3.text = answer.text;
+        answer = [_currentQuestion.answers objectAtIndex:3];
+        self.labelAnswer4.text = answer.text;
     }
 }
 
@@ -125,8 +137,10 @@
 
 - (void)theEnd
 {
+    NSString *message = [NSString stringWithFormat:@"Fim do jogo.\nCorrectas: %d\nIncorrectas: %d", _correctAnswers, _incorrectAnswers];
+
     [UIAlertView showWithTitle:@"Menorii"
-                       message:@"Fim do jogo"
+                       message:message
              cancelButtonTitle:@"Ok"
              otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
