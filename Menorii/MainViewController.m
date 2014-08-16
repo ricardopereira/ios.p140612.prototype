@@ -88,9 +88,6 @@ typedef enum : NSUInteger {
     CGPoint location = [sender locationInView:self.view];
     CGPoint boxLocation = [sender locationInView:currentView];
 
-    // Teste
-    //self.viewDetail.center = location;
-
     if ([sender state] == UIGestureRecognizerStateBegan) {
         // Start of the gesture.
         // You could remove any layout constraints that interfere

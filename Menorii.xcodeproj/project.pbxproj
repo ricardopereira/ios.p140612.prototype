@@ -531,7 +531,7 @@
 				INFOPLIST_FILE = "Menorii/Menorii-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c6e35dbd-b0a3-4f33-903a-c05d55f30350";
+				PROVISIONING_PROFILE = "646495c9-0c13-4500-b9e9-5fd3d3901b36";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

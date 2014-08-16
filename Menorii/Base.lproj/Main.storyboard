@@ -16,15 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="dha-cM-whM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="dha-cM-whM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34a-GC-Vwf">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34a-GC-Vwf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9e-Wr-jm5">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B9e-Wr-jm5">
                                         <rect key="frame" x="20" y="149" width="280" height="270"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
@@ -63,10 +63,6 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="270" id="7GD-mj-70B"/>
-                                            <constraint firstAttribute="width" constant="280" id="wdO-qs-mYn"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -78,22 +74,18 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="B9e-Wr-jm5" secondAttribute="centerY" id="dX6-eX-1bV"/>
-                                    <constraint firstAttribute="centerX" secondItem="B9e-Wr-jm5" secondAttribute="centerX" id="pmD-BU-WFj"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="34a-GC-Vwf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="OtH-23-l4t"/>
-                            <constraint firstItem="34a-GC-Vwf" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="dmM-gT-9fy"/>
-                            <constraint firstItem="dha-cM-whM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ePX-Uu-cHk"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dha-cM-whM" secondAttribute="bottom" id="eW9-Y8-qHE"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="34a-GC-Vwf" secondAttribute="bottom" id="htr-a5-DQ4"/>
-                            <constraint firstAttribute="trailing" secondItem="34a-GC-Vwf" secondAttribute="trailing" id="lKM-qp-C0S"/>
-                            <constraint firstAttribute="trailing" secondItem="dha-cM-whM" secondAttribute="trailing" id="uL7-s4-c0d"/>
-                            <constraint firstItem="dha-cM-whM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="xkE-hY-qrG"/>
+                            <constraint firstAttribute="bottom" secondItem="dha-cM-whM" secondAttribute="bottom" id="0Ng-rf-IdF"/>
+                            <constraint firstItem="34a-GC-Vwf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="2SP-8x-f4c"/>
+                            <constraint firstAttribute="trailing" secondItem="34a-GC-Vwf" secondAttribute="trailing" id="M2Y-Mi-dfa"/>
+                            <constraint firstAttribute="trailing" secondItem="dha-cM-whM" secondAttribute="trailing" id="R5E-ec-EzK"/>
+                            <constraint firstItem="dha-cM-whM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="UnE-FC-kEW"/>
+                            <constraint firstItem="dha-cM-whM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="chX-NJ-qS8"/>
+                            <constraint firstAttribute="bottom" secondItem="34a-GC-Vwf" secondAttribute="bottom" id="f86-ul-GDq"/>
+                            <constraint firstItem="34a-GC-Vwf" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="jCc-8i-Rlo"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
