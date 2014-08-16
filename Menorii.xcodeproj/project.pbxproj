@@ -30,6 +30,7 @@
 		D72BAFDF199BA3D80091B02F /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFDE199BA3D80091B02F /* QuestionViewController.m */; };
 		D72BAFE2199BFFFA0091B02F /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFE1199BFFFA0091B02F /* UIAlertView+Blocks.m */; };
 		D72BAFE5199C20E70091B02F /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = D72BAFE4199C20E70091B02F /* Answer.m */; };
+		D75764DC199FBA69007E3C03 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D75764DB199FBA69007E3C03 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		D72BAFE1199BFFFA0091B02F /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		D72BAFE3199C20E70091B02F /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		D72BAFE4199C20E70091B02F /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
+		D75764DB199FBA69007E3C03 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72252C8199A363100F0D5C4 /* CoreGraphics.framework in Frameworks */,
+				D75764DC199FBA69007E3C03 /* Crashlytics.framework in Frameworks */,
 				D72252CA199A363100F0D5C4 /* UIKit.framework in Frameworks */,
 				D72252C6199A363100F0D5C4 /* Foundation.framework in Frameworks */,
 				8BA834C3F3F54EDEB9A116A8 /* libPods.a in Frameworks */,
@@ -150,6 +153,7 @@
 		D72252C4199A363100F0D5C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D75764DB199FBA69007E3C03 /* Crashlytics.framework */,
 				D72252C5199A363100F0D5C4 /* Foundation.framework */,
 				D72252C7199A363100F0D5C4 /* CoreGraphics.framework */,
 				D72252C9199A363100F0D5C4 /* UIKit.framework */,
@@ -224,6 +228,7 @@
 				D72252BF199A363100F0D5C4 /* Frameworks */,
 				D72252C0199A363100F0D5C4 /* Resources */,
 				4AD92793D32741B29736866E /* Copy Pods Resources */,
+				D75764DA199FBA17007E3C03 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -340,6 +345,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		D75764DA199FBA17007E3C03 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run d8e4a998430741c25fc8939d85d1dee852ab2fb9 8308acaf8c93919e2529b47da88cb698cc27f681926b48b8b57f38e1e0c367dd";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -484,6 +502,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Menorii/Menorii-Prefix.pch";
 				INFOPLIST_FILE = "Menorii/Menorii-Info.plist";
@@ -500,11 +522,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Menorii/Menorii-Prefix.pch";
 				INFOPLIST_FILE = "Menorii/Menorii-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c6e35dbd-b0a3-4f33-903a-c05d55f30350";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

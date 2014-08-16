@@ -14,7 +14,7 @@
 #import "Package.h"
 #import "Question.h"
 
-static NSString *const packagesUrl = @"https://cld.pt/dl/download/c7874c49-6c23-4748-ad4c-0422e068ed7e/packages.json";
+static NSString *const packagesUrl = @"https://cld.pt/dl/download/a6b0c5b8-9aa7-44eb-a38a-90aa13dcb6f8/packages.json";
 
 @implementation DataProvider
 
@@ -24,7 +24,7 @@ static NSString *const packagesUrl = @"https://cld.pt/dl/download/c7874c49-6c23-
         // Paremeters vary with the NSURLConnection result: NSDictionary or NSData
         NSArray *freePackages = json[@"free"];
 
-        NSLog(@"Received %d free packages",[freePackages count]);
+        NSLog(@"Received %lu free packages",(unsigned long)[freePackages count]);
 
         return freePackages;
     }).then(^(NSArray *packages) {
