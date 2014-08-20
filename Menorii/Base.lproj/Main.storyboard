@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="dha-cM-whM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="dha-cM-whM">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34a-GC-Vwf">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34a-GC-Vwf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -77,24 +77,16 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="dha-cM-whM" secondAttribute="bottom" id="0Ng-rf-IdF"/>
-                            <constraint firstItem="34a-GC-Vwf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="2SP-8x-f4c"/>
-                            <constraint firstAttribute="trailing" secondItem="34a-GC-Vwf" secondAttribute="trailing" id="M2Y-Mi-dfa"/>
-                            <constraint firstAttribute="trailing" secondItem="dha-cM-whM" secondAttribute="trailing" id="R5E-ec-EzK"/>
-                            <constraint firstItem="dha-cM-whM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="UnE-FC-kEW"/>
-                            <constraint firstItem="dha-cM-whM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="chX-NJ-qS8"/>
-                            <constraint firstAttribute="bottom" secondItem="34a-GC-Vwf" secondAttribute="bottom" id="f86-ul-GDq"/>
-                            <constraint firstItem="34a-GC-Vwf" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="jCc-8i-Rlo"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonPackage" destination="txD-oK-ZkJ" id="QaS-6I-tGa"/>
+                        <outlet property="imageViewBackground" destination="dha-cM-whM" id="hNx-X7-nuK"/>
                         <outlet property="labelPackageName" destination="o8X-nR-SgS" id="vjH-rg-Bph"/>
                         <outlet property="labelWelcomeDetail" destination="alv-Pq-foD" id="2x2-Vu-va6"/>
                         <outlet property="panGesturePackage" destination="BDG-an-gR2" id="7ad-nZ-hWK"/>
+                        <outlet property="viewBackground" destination="34a-GC-Vwf" id="IeY-bC-hr2"/>
                         <outlet property="viewDetail" destination="B9e-Wr-jm5" id="AXs-n2-KJs"/>
                     </connections>
                 </viewController>

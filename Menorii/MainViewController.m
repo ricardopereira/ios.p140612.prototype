@@ -8,6 +8,8 @@
 
 #import "MainViewController.h"
 
+#import "Masonry.h"
+
 #import "DataProvider.h"
 #import "Package.h"
 #import "Question.h"
@@ -27,6 +29,9 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *buttonPackage;
 @property (weak, nonatomic) IBOutlet UILabel *labelWelcomeDetail;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewBackground;
+@property (weak, nonatomic) IBOutlet UIView *viewBackground;
+
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *panGesturePackage;
 
 @property (strong, nonatomic) UIDynamicAnimator *animator;
@@ -39,6 +44,10 @@ typedef enum : NSUInteger {
 @property (nonatomic) PackagesState loadingPackages;
 @property (nonatomic) int currentPackageIndex;
 
+//Constraints
+@property (nonatomic, strong) MASConstraint *detailXConstraint;
+@property (nonatomic, strong) MASConstraint *detailYConstraint;
+
 @end
 
 @implementation MainViewController
@@ -46,6 +55,7 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self doLayout];
     [self start];
 }
 
@@ -93,6 +103,10 @@ typedef enum : NSUInteger {
         // You could remove any layout constraints that interfere
         // with changing of the position of the content view.
 
+        [_detailXConstraint uninstall];
+        [_detailYConstraint uninstall];
+
+
         [self.animator removeBehavior:self.snapBehavior];
 
         UIOffset centerOffset = UIOffsetMake(boxLocation.x - CGRectGetMidX(currentView.bounds), boxLocation.y - CGRectGetMidY(currentView.bounds));
@@ -130,6 +144,11 @@ typedef enum : NSUInteger {
 
             [self nextPackage];
         }
+
+
+        // Constraints
+        //[_detailXConstraint install];
+        //[_detailYConstraint install];
     }
 }
 
@@ -224,6 +243,31 @@ typedef enum : NSUInteger {
 {
     self.viewDetail.center = self.view.center;
     [self viewDidAppear:true];
+}
+
+- (void)doLayout
+{
+    [self.view removeConstraints:self.view.constraints];
+    // ?!
+    [_viewBackground removeConstraints:_viewBackground.constraints];
+
+    UIView *superview = self.view;
+
+    [_imageViewBackground mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(superview).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+
+    [_viewBackground mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_imageViewBackground).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
+
+    [_viewDetail mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@280);
+        make.height.equalTo(@270);
+
+        _detailXConstraint = make.centerX.equalTo(_viewBackground.mas_centerX);
+        _detailYConstraint = make.centerY.equalTo(superview.mas_centerY);
+    }];
 }
 
 @end
