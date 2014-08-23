@@ -10,7 +10,7 @@
 
 #import "Package.h"
 
-@interface DataProvider : NSObject
+@interface DataReceiver : NSObject
 
 + (void)freePackagesWithCompletionBlock:(void(^)(NSArray *packages, NSError *error))completionBlock;
 + (void)questionsWithCompletionBlock:(Package*)package completionBlock:(void (^)(NSArray *questions, NSError *error))completionBlock;

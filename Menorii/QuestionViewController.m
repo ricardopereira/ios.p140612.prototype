@@ -30,12 +30,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonAnswer3;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAnswer4;
 
-//Data
-@property (nonatomic) int currentQuestionIndex;
-@property (nonatomic) int correctAnswers;
-@property (nonatomic) int incorrectAnswers;
-@property (strong, nonatomic) Question *currentQuestion;
-
 @end
 
 @implementation QuestionViewController
@@ -44,16 +38,12 @@
 {
     [super viewDidLoad];
 
-    _currentQuestionIndex = 0;
-    _correctAnswers = 0;
-    _incorrectAnswers = 0;
-
     self.buttonAnswer1.tag = 1;
     self.buttonAnswer2.tag = 2;
     self.buttonAnswer3.tag = 3;
     self.buttonAnswer4.tag = 4;
 
-    self.labelPackageName.text = _package.name;
+    self.labelPackageName.text = self.model.package.name;
 
     [self loadCurrentQuestion];
 }
@@ -65,24 +55,31 @@
     [self loadCurrentQuestion];
 }
 
-- (IBAction)buttonCloseDidPress:(id)sender {
+- (void)viewPrepare:(Package*)package
+{
+    assert(package);
+    self.model = [[QuestionViewModel alloc] initWithPackage:package];
+}
+
+- (IBAction)buttonCloseDidPress:(id)sender
+{
     // Close
     [self performSegueWithIdentifier:@"questionToMain" sender:self];
 }
 
-- (IBAction)buttonAnswerDidPress:(id)sender {
+- (IBAction)buttonAnswerDidPress:(id)sender
+{
     // Answered
     UIButton *button = sender;
     NSString *message;
 
+    BOOL correct = [self.model checkAnswer:button.tag];
+
     // Correct or incorrect answer
-    if (button.tag == [_currentQuestion.answer integerValue]) {
+    if (correct)
         message = @"Resposta certa.";
-        _correctAnswers++;
-    } else {
+    else
         message = @"Resposta errada.";
-        _incorrectAnswers++;
-    }
 
     [UIAlertView showWithTitle:@"Menorii"
                        message:message
@@ -93,6 +90,7 @@
                               // Close
                               [self performSegueWithIdentifier:@"questionToMain" sender:self];
                           } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Próximo"]) {
+                              // Next question
                               [self nextQuestion];
                           }
                       }];
@@ -100,34 +98,33 @@
 
 - (void)loadCurrentQuestion
 {
-    if (_currentQuestionIndex >= _package.questions.count)
+    if (![self.model hasCurrentQuestion])
         return;
-    // Data
-    self.currentQuestion = [_package.questions objectAtIndex:_currentQuestionIndex];
-    self.labelQuestion.text = _currentQuestion.question;
 
-    if (_currentQuestion.answers && _currentQuestion.answers.count == 4) {
-        Answer *answer = [_currentQuestion.answers objectAtIndex:0];
+    // Data
+    Question *question = [self.model getCurrentQuestion];
+    self.labelQuestion.text = question.question;
+
+    if (question.answers && question.answers.count == 4) {
+        Answer *answer = [question.answers objectAtIndex:0];
         self.labelAnswer1.text = answer.text;
-        answer = [_currentQuestion.answers objectAtIndex:1];
+        answer = [question.answers objectAtIndex:1];
         self.labelAnswer2.text = answer.text;
-        answer = [_currentQuestion.answers objectAtIndex:2];
+        answer = [question.answers objectAtIndex:2];
         self.labelAnswer3.text = answer.text;
-        answer = [_currentQuestion.answers objectAtIndex:3];
+        answer = [question.answers objectAtIndex:3];
         self.labelAnswer4.text = answer.text;
     }
 }
 
 - (void)nextQuestion
 {
-    _currentQuestionIndex++;
-    // Check limit
-    if (_currentQuestionIndex >= _package.questions.count) {
-        // The End
+    if (![self.model nextQuestion])
+        // Reach the end of the game
         [self theEnd];
-    }
-
-    [self refreshView];
+    else
+        // Refresh the next question
+        [self refreshView];
 }
 
 - (void)refreshView
@@ -137,7 +134,8 @@
 
 - (void)theEnd
 {
-    NSString *message = [NSString stringWithFormat:@"Fim do jogo.\nCorrectas: %d\nIncorrectas: %d", _correctAnswers, _incorrectAnswers];
+    NSString *message = [NSString stringWithFormat:@"Fim do jogo.\nCorrectas: %ld\nIncorrectas: %ld",
+                         (long)self.model.correctAnswers, (long)self.model.incorrectAnswers];
 
     [UIAlertView showWithTitle:@"Menorii"
                        message:message

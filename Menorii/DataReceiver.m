@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Ricardo Pereira. All rights reserved.
 //
 
-#import "DataProvider.h"
+#import "DataReceiver.h"
 
 #import "PromiseKit.h"
 #import "Mantle.h"
@@ -16,7 +16,7 @@
 
 static NSString *const packagesUrl = @"https://cld.pt/dl/download/a6b0c5b8-9aa7-44eb-a38a-90aa13dcb6f8/packages.json";
 
-@implementation DataProvider
+@implementation DataReceiver
 
 + (Promise *)promiseFreePackagesAccess
 {
@@ -44,7 +44,7 @@ static NSString *const packagesUrl = @"https://cld.pt/dl/download/a6b0c5b8-9aa7-
 
 + (void)freePackagesWithCompletionBlock:(void (^)(NSArray *packages, NSError *error))completionBlock
 {
-    [DataProvider promiseFreePackagesAccess].then(^(NSArray *packages){
+    [DataReceiver promiseFreePackagesAccess].then(^(NSArray *packages){
         completionBlock(packages,nil);
     }).catch(^(NSError *error){
         completionBlock(nil,error);

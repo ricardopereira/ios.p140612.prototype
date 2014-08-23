@@ -10,17 +10,11 @@
 
 #import "Masonry.h"
 
-#import "DataProvider.h"
+#import "DataReceiver.h"
 #import "Package.h"
 #import "Question.h"
 
 #import "PackageViewController.h"
-
-typedef enum : NSUInteger {
-    PackagesStateNone,
-    PackagesStateLoading,
-    PackagesStateLoaded
-} PackagesState;
 
 @interface MainViewController ()
 
@@ -39,11 +33,6 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) UIGravityBehavior *gravityBehavior;
 @property (strong, nonatomic) UISnapBehavior *snapBehavior;
 
-//Data
-@property (strong, nonatomic) NSArray *packages;
-@property (nonatomic) PackagesState loadingPackages;
-@property (nonatomic) int currentPackageIndex;
-
 //Constraints
 @property (nonatomic, strong) MASConstraint *detailXConstraint;
 @property (nonatomic, strong) MASConstraint *detailYConstraint;
@@ -55,6 +44,8 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _model = [[PackagesViewModel alloc] init];
+
     [self doLayout];
     [self start];
 }
@@ -63,10 +54,12 @@ typedef enum : NSUInteger {
 {
     [super viewDidAppear:animated];
 
-    if (_loadingPackages == PackagesStateLoaded) {
+    if (self.model.packageManager.currentState == PackagesStateLoaded)
+    {
         [self showPackage];
     }
-    else {
+    else
+    {
         [self showWelcome];
     }
 
@@ -80,11 +73,13 @@ typedef enum : NSUInteger {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"mainToPackage"]) {
-        if (_packages.count <= 0 || _currentPackageIndex >= _packages.count)
-            return;
+    if ([[segue identifier] isEqualToString:@"mainToPackage"] && [self.model hasCurrentPackage])
+    {
         PackageViewController *viewPackage = [segue destinationViewController];
-        viewPackage.package = [_packages objectAtIndex:_currentPackageIndex];
+
+        Package *currentPackage = [self.model getCurrentPackage];
+        if (currentPackage)
+            [viewPackage viewPrepare:currentPackage];
     }
 }
 
@@ -107,12 +102,12 @@ typedef enum : NSUInteger {
         [_detailYConstraint uninstall];
 
 
+        // Animation
         [self.animator removeBehavior:self.snapBehavior];
 
         UIOffset centerOffset = UIOffsetMake(boxLocation.x - CGRectGetMidX(currentView.bounds), boxLocation.y - CGRectGetMidY(currentView.bounds));
 
         self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:currentView offsetFromCenter:centerOffset attachedToAnchor:location];
-
         self.attachmentBehavior.frequency = 0;
 
         [self.animator addBehavior:self.attachmentBehavior];
@@ -154,23 +149,12 @@ typedef enum : NSUInteger {
 
 - (void)start
 {
-    [self loadPackages];
+    [self.model loadPackages];
 
     // Init
     self.viewDetail.alpha = 0;
-    _currentPackageIndex = 0;
     // UI Dynamics
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-}
-
-- (void)loadPackages
-{
-    _loadingPackages = PackagesStateLoading;
-    // Teste
-    [DataProvider freePackagesWithCompletionBlock:^(NSArray *packages, NSError *error) {
-        self.packages = packages;
-        _loadingPackages = PackagesStateLoaded;
-    }];
 }
 
 - (void)showWelcome
@@ -193,8 +177,8 @@ typedef enum : NSUInteger {
     self.viewDetail.backgroundColor = [UIColor whiteColor];
 
     // Data
-    if (_packages.count > 0) {
-        Package *item = [_packages objectAtIndex:_currentPackageIndex];
+    if ([self.model hasCurrentPackage]) {
+        Package *item = [self.model getCurrentPackage];
         self.labelPackageName.text = item.name;
     }
 
@@ -223,12 +207,9 @@ typedef enum : NSUInteger {
 
 - (void)nextPackage
 {
-    _currentPackageIndex++;
-    // Check limit
-    if (_currentPackageIndex >= _packages.count) {
-        _currentPackageIndex = 0;
-    }
+    [self.model nextPackage];
 
+    // Animation
     [self.animator removeAllBehaviors];
 
     // ?!
@@ -253,6 +234,7 @@ typedef enum : NSUInteger {
 
     UIView *superview = self.view;
 
+    // Constraints
     [_imageViewBackground mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(superview).insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];

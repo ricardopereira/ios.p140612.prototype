@@ -8,7 +8,7 @@
 
 #import "PackageViewController.h"
 
-#import "DataProvider.h"
+#import "DataReceiver.h"
 #import "QuestionViewController.h"
 
 @interface PackageViewController ()
@@ -23,33 +23,34 @@
 {
     [super viewDidLoad];
 
-    self.labelPackageName.text = _package.name;
+    self.labelPackageName.text = self.model.package.name;
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewPrepare:(Package*)package
 {
-    [super viewDidAppear:animated];
+    assert(package);
+    self.model = [[PackageViewModel alloc] initWithPackage:package];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"packageToQuestion"]) {
+    if ([[segue identifier] isEqualToString:@"packageToQuestion"])
+    {
         QuestionViewController *view = [segue destinationViewController];
-        view.package = _package;
+        //?!
+        [view viewPrepare:self.model.package];
     }
 }
 
-- (IBAction)buttonBackDidPress:(id)sender {
+- (IBAction)buttonBackDidPress:(id)sender
+{
     [self performSegueWithIdentifier:@"packageToMain" sender:self];
 }
 
-- (IBAction)buttonStartDidPress:(id)sender {
-    // Start questions after receiving the data
-    [DataProvider questionsWithCompletionBlock:_package completionBlock:^(NSArray *questions, NSError *error) {
-        if (questions.count <= 0)
-            return;
-        // Get all the questions
-        self.package.questions = questions;
+- (IBAction)buttonStartDidPress:(id)sender
+{
+    [self.model loadQuestions:^{
+        // Finally
         [self performSegueWithIdentifier:@"packageToQuestion" sender:self];
     }];
 }

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Package.h"
+#import "QuestionViewModel.h"
 
 @interface QuestionViewController : UIViewController
 
-@property (nonatomic, strong) Package *package;
+@property (nonatomic, strong) QuestionViewModel *model;
+
+- (void)viewPrepare:(Package*)package;
 
 @end
